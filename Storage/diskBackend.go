@@ -37,7 +37,7 @@ func (db *DiskBackend) GetProfile(accessCode string) (prof proto.ProfilePacket, 
 
 	var data []byte
 
-	data, err = ioutil.ReadFile(db.getProfilePath(accessCode))
+	data, err = os.ReadFile(db.getProfilePath(accessCode))
 
 	if err != nil {
 		return
@@ -101,15 +101,15 @@ func (db *DiskBackend) saveProfile(profile proto.ProfilePacket) error {
 
 	accessCode := profile.AccessCode.String()
 
-	return ioutil.WriteFile(db.getProfilePath(accessCode), profile.ToBinary(), 0770)
+	return os.WriteFile(db.getProfilePath(accessCode), profile.ToBinary(), 0770)
 }
 
 func (db *DiskBackend) saveWorldBest(wb *proto.WorldBestPacket) error {
-	return ioutil.WriteFile("worldbest.bin", wb.ToBinary(), 0770)
+	return os.WriteFile("worldbest.bin", wb.ToBinary(), 0770)
 }
 
 func (db *DiskBackend) saveRankMode(rm *proto.RankModePacket) error {
-	return ioutil.WriteFile("profile.bin", rm.ToBinary(), 0770)
+	return os.WriteFile("profile.bin", rm.ToBinary(), 0770)
 }
 
 func (db *DiskBackend) SaveProfile(profile proto.ProfilePacket) error {
@@ -145,7 +145,7 @@ func (db *DiskBackend) GetWorldBest() (wb *proto.WorldBestPacket, err error) {
 
 	var data []byte
 
-	data, err = ioutil.ReadFile("worldbest.bin")
+	data, err = os.ReadFile("worldbest.bin")
 
 	if err != nil {
 		return
@@ -168,7 +168,7 @@ func (db *DiskBackend) GetRankMode() (rm *proto.RankModePacket, err error) {
 
 	var data []byte
 
-	data, err = ioutil.ReadFile("rankmode.bin")
+	data, err = os.ReadFile("rankmode.bin")
 
 	if err != nil {
 		return

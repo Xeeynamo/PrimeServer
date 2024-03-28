@@ -7,7 +7,7 @@ import (
 	"github.com/HUEBRTeam/PrimeServer/Storage"
 	"github.com/quan-to/slog"
 	"gopkg.in/alecthomas/kingpin.v2"
-	"io/ioutil"
+	"os"
 )
 
 var log = slog.Scope("Profile Maker")
@@ -25,7 +25,7 @@ func main() {
 	pm := ProfileManager.MakeProfileManager(sb)
 
 	log.Info("Creating profile %s", *name)
-	accessCode, err := pm.Create(*name)
+	accessCode, err := pm.Create(*name, 0, 0, 0, 0)
 
 	if err != nil {
 		log.Fatal(err)
@@ -36,7 +36,7 @@ func main() {
 	profileFile := fmt.Sprintf("prime-%s.bin", *name)
 
 	log.Info("Saving file %s", profileFile)
-	err = ioutil.WriteFile(profileFile, v, 0777)
+	err = os.WriteFile(profileFile, v, 0777)
 
 	if err != nil {
 		log.Fatal("Error saving file %s: %s", profileFile, err)

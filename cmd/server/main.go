@@ -4,7 +4,6 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"io"
-	"io/ioutil"
 	"net"
 	"os"
 	"strings"
@@ -41,13 +40,13 @@ func main() {
 			log.Error("Error: cannot read config struct, %s", err.Error()) // this shouldn't happen
 			os.Exit(1)
 		}
-		err = ioutil.WriteFile(ConfigFile, []byte(j), 0644)
+		err = os.WriteFile(ConfigFile, j, 0644)
 		if err != nil {
 			log.Error("Error: cannot write config file, %s", err.Error())
 			os.Exit(1)
 		}
 	}
-	conf, err := ioutil.ReadFile(ConfigFile)
+	conf, err := os.ReadFile(ConfigFile)
 	if err != nil {
 		log.Error("Error: cannot read config file, %s", err.Error())
 		os.Exit(1)

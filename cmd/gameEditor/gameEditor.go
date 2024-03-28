@@ -5,7 +5,6 @@ import (
 	"github.com/HUEBRTeam/PrimeServer/tools"
 	"github.com/quan-to/slog"
 	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 )
@@ -32,7 +31,7 @@ func main() {
 		log.Fatal("File %s does not exists", filename)
 	}
 
-	data, err := ioutil.ReadFile(filename)
+	data, err := os.ReadFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -99,7 +98,7 @@ func main() {
 			continue
 		}
 
-		err = ioutil.WriteFile(filename, data, os.ModePerm)
+		err = os.WriteFile(filename, data, os.ModePerm)
 		if err != nil {
 			log.Error(err)
 			continue

@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"io/ioutil"
+	"os"
 )
 
 // region FromBinary
@@ -500,7 +500,7 @@ func DecodePacket(data []byte) (GenericPacket, error) {
 	case PacketUnknown1:
 		gp = &UnknownPacket1{}
 	default:
-		_ = ioutil.WriteFile(fmt.Sprintf("%08x.bin", packetType), data, 0777)
+		_ = os.WriteFile(fmt.Sprintf("%08x.bin", packetType), data, 0777)
 		return nil, fmt.Errorf("no such packet type %08x", packetType)
 	}
 

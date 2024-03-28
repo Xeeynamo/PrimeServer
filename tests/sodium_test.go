@@ -3,14 +3,14 @@ package tests
 import (
 	"github.com/HUEBRTeam/PrimeServer/proto"
 	"golang.org/x/crypto/nacl/box"
-	"io/ioutil"
+	"os"
 	"testing"
 )
 
 func TestSodium(t *testing.T) {
-	unenc, _ := ioutil.ReadFile("../RE/Packets/RawSample/Unencrypted.bin")
-	nonce, _ := ioutil.ReadFile("../RE/Packets/RawSample/Nounce.bin")
-	enc, _ := ioutil.ReadFile("../RE/Packets/RawSample/Encrypted.bin")
+	unenc, _ := os.ReadFile("../RE/Packets/RawSample/Unencrypted.bin")
+	nonce, _ := os.ReadFile("../RE/Packets/RawSample/Nounce.bin")
+	enc, _ := os.ReadFile("../RE/Packets/RawSample/Encrypted.bin")
 
 	var nonceBytes [24]byte
 

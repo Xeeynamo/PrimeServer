@@ -2,12 +2,12 @@ package proto
 
 import (
 	"fmt"
-	"io/ioutil"
+	"os"
 	"testing"
 )
 
 func TestMachineInfoPacket_FromBinary(t *testing.T) {
-	data, err := ioutil.ReadFile("../RE/Packets/Start/1.01.0/raw_8_out_115.68.108.183_60000.bin")
+	data, err := os.ReadFile("../RE/Packets/Start/1.01.0/raw_8_out_115.68.108.183_60000.bin")
 
 	if err != nil {
 		t.Fatalf("Error loading file: %s", err)
@@ -30,7 +30,7 @@ func TestMachineInfoPacket_FromBinary(t *testing.T) {
 }
 
 func TestProfilePacket_FromBinary(t *testing.T) {
-	data, err := ioutil.ReadFile("../RE/Packets/Login/sodium_12_in_pkt.bin")
+	data, err := os.ReadFile("../RE/Packets/Login/sodium_12_in_pkt.bin")
 
 	if err != nil {
 		t.Fatalf("Error loading file: %s", err)
@@ -45,7 +45,7 @@ func TestProfilePacket_FromBinary(t *testing.T) {
 }
 
 func TestScoreBoard2_FromBinary(t *testing.T) {
-	data, err := ioutil.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_224.bin")
+	data, err := os.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_224.bin")
 
 	if err != nil {
 		t.Fatalf("Error loading file: %s", err)
@@ -60,7 +60,7 @@ func TestScoreBoard2_FromBinary(t *testing.T) {
 
 	fmt.Println(pp.String())
 
-	data, err = ioutil.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_225.bin")
+	data, err = os.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_225.bin")
 
 	if err != nil {
 		t.Fatalf("Error loading file: %s", err)
@@ -75,7 +75,7 @@ func TestScoreBoard2_FromBinary(t *testing.T) {
 
 	fmt.Println(pp.String())
 
-	data, err = ioutil.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_226.bin")
+	data, err = os.ReadFile("../RE/Packets/MusicScore/1.08.0/PUMP IT UP: PRIME_226.bin")
 
 	if err != nil {
 		t.Fatalf("Error loading file: %s", err)
